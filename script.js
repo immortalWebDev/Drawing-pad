@@ -17,7 +17,7 @@ let backgroundColor = '#ffffff';
 let isEraser = false;
 let x, y;
 
-// Initialize canvas background 
+// Initialize canvas background
 ctx.fillStyle = backgroundColor;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -62,7 +62,7 @@ colorEl.addEventListener('change', (e) => {
 
 eraserEl.addEventListener('click', () => {
     isEraser = true;
-    color = backgroundColor; // Set eraser to match the background  (When we change it)
+    color = backgroundColor; // Set eraser to match the background (When we change it)
 });
 
 bgColorEl.addEventListener('change', (e) => {
@@ -83,7 +83,17 @@ saveEl.addEventListener('click', () => {
     link.click();
 });
 
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    if (e.key === '+') increaseBtn.click();
+    if (e.key === '-') decreaseBtn.click();
+    if (e.key === 'e') eraserEl.click();
+    if (e.key === 's') saveEl.click();
+    if (e.key === 'c') clearEl.click();
 
+});
+
+// Helper Functions for drawing straight lines and rounds
 function drawCircle(x, y) {
     ctx.beginPath();
     ctx.arc(x, y, size, 0, Math.PI * 2);
