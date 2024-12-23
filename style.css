@@ -81,3 +81,12 @@ canvas {
   padding: 0 0.5rem;
 }
 
+@media (max-width: 768px) {
+  .toolbox {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .toolbox > * {
+    margin: 0.2rem;
+  }
+}
