@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Drawing App</title>
+    <title>Drawing Pad</title>
   </head>
   <body>
     <div class="container">
       <canvas id="canvas" width="800" height="700"></canvas>
       <div class="toolbox">
-
+        <button id="decrease" title="Decrease Size">-</button>
+        <span id="size">10</span>
+        <button id="increase" title="Increase Size">+</button>
+        <input type="color" id="color" title="Select Color">
+        <button id="eraser" title="Eraser">E</button>
+        <input type="color" id="background-color" title="Background Color">
+        <button id="clear" title="Clear Canvas">X</button>
+        <button id="save" title="Save Drawing">💾</button>
       </div>
     </div>
 
