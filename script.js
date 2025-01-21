@@ -21,7 +21,7 @@ let x, y;
 ctx.fillStyle = backgroundColor;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-// Event Listeners
+// Event Listeners for mouse
 canvas.addEventListener('mousedown', (e) => {
     isPressed = true;
     x = e.offsetX;
@@ -44,6 +44,35 @@ canvas.addEventListener('mousemove', (e) => {
         y = y2;
     }
 });
+
+//Event Listeners for touchscreen
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    isPressed = true;
+    const touch = e.touches[0];
+    x = touch.clientX - canvas.offsetLeft;
+    y = touch.clientY - canvas.offsetTop;
+});
+
+canvas.addEventListener('touchend', () => {
+    isPressed = false;
+    x = undefined;
+    y = undefined;
+});
+
+canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    if (isPressed) {
+        const touch = e.touches[0];
+        const x2 = touch.clientX - canvas.offsetLeft;
+        const y2 = touch.clientY - canvas.offsetTop;
+        drawCircle(x2, y2);
+        drawLine(x, y, x2, y2);
+        x = x2;
+        y = y2;
+    }
+});
+
 
 increaseBtn.addEventListener('click', () => {
     size = Math.min(size + 5, 50);
